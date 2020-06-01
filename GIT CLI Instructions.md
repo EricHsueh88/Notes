@@ -18,9 +18,16 @@
 ### 製作Commit
 >1.在版本提交後又更改的檔案尚未被GIT追蹤，列入**Untracked Area**。  
 >2.`git add` 後列入**Staging Area**(等待commit區)。  
->3.`git commit -m "description"`，將更改**Commit**至儲存區**(Repo**)。
-
+>3.`git commit -m "description"`，將更改**Commit**至儲存區**(Repo**)。  
+>4. 可使用`git commit -a -m "description"`
 ### Branch 分支：
 - 檢查分支：`git branch`
 - 切換分支：`git checkout <branch>`
 - 刪除分支：`git branch -d <branch>`
+
+### 檢視提交的歷史紀錄：
+使用 `git log`以反向時間來檢視提交紀錄，可搭配指令有 
+- `-p`：用來顯示每筆提交所做的修改內容。
+- `-n`：指定輸出最後n筆紀錄。
+- `--oneline`：將輸出結果以一筆一行呈現。
+- `--committer`：列出提交者名字符合指定字串的提交。
