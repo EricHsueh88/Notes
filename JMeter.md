@@ -94,6 +94,16 @@ Thread Group > Add > logic Controller > Recording Controller
     Authorization settings
 
   :::
+* **Request Header Config(請求標頭設定)**
+  ::: success 
+  Recording Controller - HTTP Request(doule click) > HTTP Header Manager > parameterize header value (refer extractor param) 
+  :::
+ 
+  ::: spoiler view pic 
+  ![image](https://hackmd.io/_uploads/SkAj-O-NC.png)
+
+
+  :::
 
 
 ---
