@@ -45,21 +45,41 @@ Thread Group > Add > Listeners > View Result Tree
   Test Plan > Add > Non-Test Elements > Test Script Recorder
   :::
   
-  :::spoiler view pic
+
   
   ![](https://i.imgur.com/slwXbKS.png)
-  ![](https://i.imgur.com/slwXbKS.png)
 
-  :::
+
 
 * **Configuration**
   ::: info 
   HTTPS Domains：Domain Name Which you test
   Target Controller: Toggle target controller by     dropDown
   :::
-  :::spoiler view pic
+
   ![](https://i.imgur.com/aOOcgqi.png)
+  
+*  **SSL Settings (==OPTIONAL==)**
+  ::: info 
+  If your target website set HSTS, the CA is necessary in this scenario.\
+ And Here's the demostrate for generate self-certificate through command line below.
   :::
+  **1. generate Keypair from RSA into proxyserver.jks file**
+ 
+ > cmd script : \
+ > keytool -genkeypair -alias `<root.ca>` -dname `
+ "CN=_JMeter Root CA for recording (INSTALL ONLY IF IT'S YOURS), OU=Username: yuan_lin, C=TW"` -keyalg `<RSA>` -keystore `<proxyserver.jks>` -storepass `<password>` -keypass `<password>`-validity `<7>`\
+ 
+ * **Param Description**
+   * keytool : Java 提供的密鑰和證書管理工具。
+   * -genkeypair : 生成一個密鑰對（包括公鑰和私鑰）
+   * -keyalg `RSA` : 指定使用的加密演算法
+   * -storepass `password` : 用於保護密鑰庫的密碼
+   * -keypass `password`:保護私鑰的密碼
+   * -validity `7`: 簽章時效(天)
+
+ **2.try another way like export crt from website than set into jmeter ssl manager**
+ 
 
 
 ###  **Recording Controller**
@@ -67,11 +87,10 @@ Thread Group > Add > Listeners > View Result Tree
 Thread Group > Add > logic Controller > Recording Controller
 :::
 
-::: spoiler view pic
 ![](https://i.imgur.com/EfQ6URz.png)
-:::
+
 \
-==tips:若有需要登入Authorization資料(ex:token..)可利用提取器來將登入成功回傳token，寫入變數中==
+==tips:若有需要登入Authorization資料(ex:token..)可利用Extractor來將登入成功回傳token，寫入變數中==
 
 * **Extractor Config(提取器設定)**
   ::: success 
@@ -85,25 +104,20 @@ Thread Group > Add > logic Controller > Recording Controller
   Template(位置):`$1$`
   
   :::
-  
-  ::: spoiler view pic
+
     ![](https://i.imgur.com/7cGpWsC.png)
     create 
     
     ![](https://i.imgur.com/xWrOlNt.png)
     Authorization settings
-
-  :::
+  
 * **Request Header Config(請求標頭設定)**
   ::: success 
   Recording Controller - HTTP Request(doule click) > HTTP Header Manager > parameterize header value (refer extractor param) 
   :::
  
-  ::: spoiler view pic 
+
   ![image](https://hackmd.io/_uploads/SkAj-O-NC.png)
-
-
-  :::
 
 
 ---
@@ -145,10 +159,10 @@ Proxy Settings From PC
 6. Click stop to end recording
 :::
 
-::: spoiler view pic 
+
 ![](https://i.imgur.com/FzXKQ6N.png)
 Test Script Recorder
-:::
+
     
 ### **Step3.** Run Test
 :::info
@@ -156,10 +170,9 @@ Test Script Recorder
 2. Check test result in View Results Tree
 :::
 
-::: spoiler view pic 
+
 ![](https://i.imgur.com/uIoVNUM.png)
 Test Run & View Result
-:::
     
 ### **Step4.** Export Result
 :::info
